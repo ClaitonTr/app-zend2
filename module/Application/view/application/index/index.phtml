@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col-md-6">
+        <h3>Motoristas</h3>
+        <?php if ($this->mot): ?>
+            <h3><?php echo $this->mot->getNome(); ?></h3>
+        <?php endif; ?>
+    </div>
+    <div class="col-md-6 text-right">
+        <a class="btn btn-primary" role="button" href="<?php echo $this->url(
+            'motorista',
+            array('controller' => 'index', 'action' => 'cadastro')
+        ); ?>">Adicionar motorista</a>
+    </div>
+</div>
+
+<?php if (count($this->lista) == 0): ?>
+    <h4>Nenhum motorista cadastrado</h4>
+<?php else: ?>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Rg</th>
+                <th scope="col">Cpf</th>
+                <th scope="col">Telefone</th>
+                <th scope="col">Veículo</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($this->lista as $m): ?>
+                <tr>
+                    <th scope="row"><?php echo $m->getId(); ?></th>
+                    <td><?php echo $m->getNome(); ?></td>
+                    <td><?php echo $m->getRg(); ?></td>
+                    <td class="mostra-cpf"><?php echo $m->getCpf(); ?></td>
+                    <td class="mostra-tel"><?php echo $m->getTelefone(); ?></td>
+                    <td>
+                        <?php echo $m->getVeiculo() ? $m->getVeiculo()->getPlaca() : ""; ?>
+                    </td>
+                    <td><a href="<?php echo $this->url('alterar-motorista', array(
+                        'action' => 'editar',
+                        'id' => $m->getId()
+                    )); ?>"
+                            class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Editar</a>
+                    </td>
+                    <td><a href="<?php echo $this->url('alterar-motorista', array(
+                        'action' => 'excluir',
+                        'id' => $m->getId()
+                    )); ?>"
+                            class="text-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Excluir</a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+<?php endif; ?>

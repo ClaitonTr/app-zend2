@@ -1,0 +1,56 @@
+<div class="row">
+    <div class="col-md-6">
+        <h3>Veículos</h3>
+    </div>
+    <div class="col-md-6 text-right">
+        <a class="btn btn-primary" role="button" href="<?php echo $this->url(
+            'veiculo',
+            array('controller' => 'index', 'action' => 'cadastro')
+        ); ?>">Adicionar veículo</a>
+    </div>
+</div>
+
+<?php if (count($this->lista) == 0): ?>
+    <h4>Nenhum veículo cadastrado</h4>
+<?php else: ?>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Placa</th>
+                <th scope="col">Renavam</th>
+                <th scope="col">Modelo</th>
+                <th scope="col">Marca</th>
+                <th scope="col">Ano</th>
+                <th scope="col">Cor</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($this->lista as $v): ?>
+                <tr>
+                    <th scope="row"><?php echo $v->getId(); ?></th>
+                    <td><?php echo $v->getPlaca(); ?></td>
+                    <td><?php echo $v->getRenavam(); ?></td>
+                    <td><?php echo $v->getModelo(); ?></td>
+                    <td><?php echo $v->getMarca(); ?></td>
+                    <td><?php echo $v->getAno(); ?></td>
+                    <td><?php echo $v->getCor(); ?></td>
+                    <td><a href="<?php echo $this->url('alterar-veiculo', array(
+                        'action' => 'editar',
+                        'id' => $v->getId()
+                    )); ?>"
+                            class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Editar</a>
+                    </td>
+                    <td><a href="<?php echo $this->url('alterar-veiculo', array(
+                        'action' => 'excluir',
+                        'id' => $v->getId()
+                    )); ?>"
+                            class="text-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Excluir</a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+<?php endif; ?>

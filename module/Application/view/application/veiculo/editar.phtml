@@ -1,0 +1,56 @@
+<h3>Editar Veículo</h3>
+
+<form class="veiculo" method="post">
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-3">
+                <label for="name" class="form-label">Placa</label>
+                <input type="text" name="placa" id="placa" class="form-control" placeholder="Placa" aria-label="Placa"
+                    value="<?php echo $this->m->getPlaca(); ?>" maxlength="7" />
+                <p id="placa-err" class="text-danger" hidden></p>
+            </div>
+            <div class="col-md-9">
+                <label for="name" class="form-label">Renavam</label>
+                <input type="text" name="renavam" id="renavam" class="form-control" placeholder="Renavam"
+                    aria-label="Renavam" value="<?php echo $this->m->getRenavam(); ?>" maxlength="30" />
+                <p id="renavam-err" class="text-danger" hidden></p>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="name" class="form-label">Modelo</label>
+        <input type="text" name="modelo" id="modelo" class="form-control" placeholder="Modelo" aria-label="Modelo"
+            value="<?php echo $this->m->getModelo(); ?>" maxlength="20" />
+        <p id="modelo-err" class="text-danger" hidden></p>
+    </div>
+    <div class="form-group">
+        <label for="name" class="form-label">Marca</label>
+        <input type="text" name="marca" id="marca" class="form-control" placeholder="Marca" aria-label="Marca"
+            value="<?php echo $this->m->getMarca(); ?>" maxlength="20" />
+        <p id="marca-err" class="text-danger" hidden></p>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-3">
+                <label for="name" class="form-label">Ano</label>
+                <input type="text" name="ano" id="ano" class="form-control" placeholder="Ano" aria-label="Ano"
+                    value="<?php echo $this->m->getAno(); ?>" maxlength="4" />
+                <p id="ano-err" class="text-danger" hidden></p>
+            </div>
+            <div class="col-md-9">
+                <label for="name" class="form-label">Cor</label>
+                <input type="text" name="cor" id="cor" class="form-control" placeholder="Cor" aria-label="Cor"
+                    value="<?php echo $this->m->getCor(); ?>" maxlength="20" />
+                <p id="cor-err" class="text-danger" hidden></p>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+</form>
+<?php if ($this->err): ?>
+    <div class="alert alert-danger alert-dismissible alert-err" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                aria-hidden="true">&times;</span></button>
+        <p><?php echo $this->err; ?></p>
+    </div>
+<?php endif; ?>

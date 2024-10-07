@@ -1,0 +1,53 @@
+<h3>Adicionar Motorista</h3>
+
+<form class="motorista" method="post">
+    <div class="form-group">
+        <label for="name" class="form-label">Nome</label>
+        <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome" aria-label="Nome"
+            maxlength="200" />
+        <p id="nome-err" class="text-danger" hidden></p>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-4">
+                <label for="name" class="form-label">RG</label>
+                <input type="text" name="rg" id="rg" class="form-control" placeholder="RG" aria-label="RG"
+                    maxlength="20" />
+                <p id="rg-err" class="text-danger" hidden></p>
+            </div>
+            <div class="col-md-4">
+                <label for="name" class="form-label">CPF</label>
+                <input type="text" name="cpf" id="cpf" class="form-control" placeholder="CPF" aria-label="CPF"
+                    maxlength="11" />
+                <p id="cpf-err" class="text-danger" hidden></p>
+            </div>
+            <div class="col-md-4">
+                <label for="name" class="form-label">Telefone</label>
+                <input type="text" name="telefone" id="telefone" class="form-control" placeholder="Telefone"
+                    aria-label="Telefone" maxlength="11" />
+                <p id="tel-err" class="text-danger" hidden></p>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-4">
+                <label for="veiculo" class="form-label">Veiculo</label>
+                <select id="veiculo" name="veiculo" class="form-control">
+                    <option value="">Selecione</option>
+                    <?php foreach ($this->veiculos as $v): ?>
+                        <option value="<?php echo $v->getId(); ?>"><?php echo $v->getPlaca(); ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+</form>
+<?php if ($this->err): ?>
+    <div class="alert alert-danger alert-dismissible alert-err" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                aria-hidden="true">&times;</span></button>
+        <p><?php echo $this->err; ?></p>
+    </div>
+<?php endif; ?>
